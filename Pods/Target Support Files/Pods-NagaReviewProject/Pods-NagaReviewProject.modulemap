@@ -1,0 +1,6 @@
+framework module Pods_NagaReviewProject {
+  umbrella header "Pods-NagaReviewProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
