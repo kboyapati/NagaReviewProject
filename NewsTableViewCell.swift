@@ -18,6 +18,8 @@ class NewsTableViewCell: UITableViewCell {
 
     var cellNews: News?
 
+    var cellMaxSizeImageUrl: String?
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -38,8 +40,7 @@ class NewsTableViewCell: UITableViewCell {
             let titleText = "\(aNewsObj.title)"
             self.titleLabel.text = titleText
             self.descriptionTextlabel.text = aNewsObj.descriptionTextString
-            
-//            print("In news - Image - \(String(describing: aNewsObj.imageURLString))")
+            self.cellMaxSizeImageUrl = aNewsObj.biggerMedia
             
             // Submit request to download and apply poster image to the imageView outlet
             NetworkClass.instance.downloadImageTask(aNewsObj.imageURLString, completionHandler: { [weak self](image, success) in

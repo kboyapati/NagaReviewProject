@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D1EA8CD1F55D16F009B4CD7 /* newsplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CB1F55D16F009B4CD7 /* newsplaceholder.png */; };
 		4D1EA8CE1F55D16F009B4CD7 /* newsplaceholderColor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CC1F55D16F009B4CD7 /* newsplaceholderColor.jpg */; };
+		4D1EA8D11F55EECB009B4CD7 /* MediaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */; };
+		4D1EA8D21F55EECB009B4CD7 /* MediaDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */; };
 		4D7C4B5F1F54B669009056C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */; };
 		4D7C4B611F54B669009056C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B601F54B669009056C3 /* ViewController.swift */; };
 		4D7C4B641F54B669009056C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C4B621F54B669009056C3 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 		2F3E9A39CB3AA89BE8B16122 /* Pods-NagaReviewProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NagaReviewProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NagaReviewProject/Pods-NagaReviewProject.debug.xcconfig"; sourceTree = "<group>"; };
 		4D1EA8CB1F55D16F009B4CD7 /* newsplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsplaceholder.png; sourceTree = "<group>"; };
 		4D1EA8CC1F55D16F009B4CD7 /* newsplaceholderColor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newsplaceholderColor.jpg; sourceTree = "<group>"; };
+		4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailsViewController.swift; sourceTree = "<group>"; };
+		4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaDetailsViewController.xib; sourceTree = "<group>"; };
 		4D7C4B5B1F54B669009056C3 /* NagaReviewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NagaReviewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D7C4B601F54B669009056C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 			children = (
 				4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */,
 				4D7C4B601F54B669009056C3 /* ViewController.swift */,
+				4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */,
+				4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */,
 				4D7C4B621F54B669009056C3 /* Main.storyboard */,
 				4D7C4B651F54B669009056C3 /* Assets.xcassets */,
 				4D7C4B671F54B669009056C3 /* LaunchScreen.storyboard */,
@@ -284,6 +290,7 @@
 			files = (
 				4D7C4B691F54B669009056C3 /* LaunchScreen.storyboard in Resources */,
 				4D7C4B661F54B669009056C3 /* Assets.xcassets in Resources */,
+				4D1EA8D21F55EECB009B4CD7 /* MediaDetailsViewController.xib in Resources */,
 				4D1EA8CE1F55D16F009B4CD7 /* newsplaceholderColor.jpg in Resources */,
 				4D1EA8CD1F55D16F009B4CD7 /* newsplaceholder.png in Resources */,
 				4D7C4B641F54B669009056C3 /* Main.storyboard in Resources */,
@@ -361,6 +368,7 @@
 			files = (
 				4D7C4B611F54B669009056C3 /* ViewController.swift in Sources */,
 				4D7C4B901F54C5DF009056C3 /* NetworkClass.swift in Sources */,
+				4D1EA8D11F55EECB009B4CD7 /* MediaDetailsViewController.swift in Sources */,
 				4D7C4B961F54CAF7009056C3 /* NewsTableViewCell.swift in Sources */,
 				4D7C4B5F1F54B669009056C3 /* AppDelegate.swift in Sources */,
 				4D7C4B921F54C783009056C3 /* NewsObject.swift in Sources */,

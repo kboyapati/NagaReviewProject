@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaDetailsViewController" customModule="NagaReviewProject" customModuleProvider="target">
+            <connections>
+                <outlet property="authorNameLabel" destination="AY4-QK-fHf" id="Rcv-AW-laC"/>
+                <outlet property="postedMedia" destination="hNR-oS-j8f" id="akS-3v-tlT"/>
+                <outlet property="saveToCameraRoll" destination="Auz-Ge-lIe" id="cQf-LB-Vrf"/>
+                <outlet property="shareToSocialNetwork" destination="Jpd-r5-X9o" id="wwf-kA-S4C"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AY4-QK-fHf" userLabel="AuthotNameLabel">
+                    <rect key="frame" x="0.0" y="74" width="375" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNR-oS-j8f">
+                    <rect key="frame" x="0.0" y="113.5" width="375" height="486.5"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auz-Ge-lIe" userLabel="Save To Camera Roll">
+                    <rect key="frame" x="16" y="617" width="171" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="fsg-Yg-6so"/>
+                    </constraints>
+                    <state key="normal" title="Save to Cameraroll"/>
+                    <connections>
+                        <action selector="saveToCameraRollPressed:" destination="-1" eventType="touchUpInside" id="XcE-WW-gfC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-r5-X9o" userLabel="Share To FB">
+                    <rect key="frame" x="193" y="617" width="171" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KB7-Th-PZD"/>
+                    </constraints>
+                    <state key="normal" title="Share"/>
+                    <connections>
+                        <action selector="shareToSocialNetworkPressed:" destination="-1" eventType="touchUpInside" id="gsi-HK-BZs"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Auz-Ge-lIe" firstAttribute="width" secondItem="Jpd-r5-X9o" secondAttribute="width" id="Hn8-A9-CdM"/>
+                <constraint firstAttribute="bottom" secondItem="Auz-Ge-lIe" secondAttribute="bottom" constant="20" id="TKK-Xi-BuD"/>
+                <constraint firstItem="Jpd-r5-X9o" firstAttribute="leading" secondItem="Auz-Ge-lIe" secondAttribute="trailing" constant="6" id="VQB-Iv-z9d"/>
+                <constraint firstItem="Auz-Ge-lIe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Vkr-Sf-Db9"/>
+                <constraint firstItem="hNR-oS-j8f" firstAttribute="top" secondItem="AY4-QK-fHf" secondAttribute="bottom" constant="16.5" id="Z5m-iP-nLw"/>
+                <constraint firstAttribute="trailing" secondItem="Jpd-r5-X9o" secondAttribute="trailing" constant="11" id="aGJ-2G-cqV"/>
+                <constraint firstItem="AY4-QK-fHf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="aZh-8e-z5F"/>
+                <constraint firstAttribute="bottom" secondItem="Jpd-r5-X9o" secondAttribute="bottom" constant="20" id="e9V-Cn-ZsN"/>
+                <constraint firstItem="Auz-Ge-lIe" firstAttribute="top" secondItem="hNR-oS-j8f" secondAttribute="bottom" constant="17" id="hmu-iM-TcV"/>
+                <constraint firstAttribute="trailing" secondItem="AY4-QK-fHf" secondAttribute="trailing" id="l12-PL-8YK"/>
+                <constraint firstAttribute="trailing" secondItem="hNR-oS-j8f" secondAttribute="trailing" id="lL1-Gh-GrI"/>
+                <constraint firstItem="hNR-oS-j8f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nWM-2e-peY"/>
+                <constraint firstItem="AY4-QK-fHf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qO1-Mv-eQx"/>
+                <constraint firstItem="Jpd-r5-X9o" firstAttribute="top" secondItem="hNR-oS-j8f" secondAttribute="bottom" constant="17" id="wsV-6P-0qH"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

@@ -101,7 +101,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let mediaDetailsViewCtlr = MediaDetailsViewController()
+        if newsArray != nil{
+            let path = newsArray![indexPath.row].biggerMedia
+            let authorName = newsArray![indexPath.row].authorName
+
+            mediaDetailsViewCtlr.setMediaPath(with: path!)
+            mediaDetailsViewCtlr.setAuthorName(with: authorName)
+
+        }
+        self.navigationController?.pushViewController(mediaDetailsViewCtlr, animated: true)
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,6 +192,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if refreshControl.isRefreshing {
             if !isDownloadingData {
                 pageNunm = 1
+                nextPageOffset = ""
                 loadData(pageNunm, nextPageOffset: nextPageOffset)
             }
         }
