@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var newsArray: [News]?
 
     var refreshControl: UIRefreshControl!
+    var pageNunm = 1
+    var isDownloadingData: Bool = false
 
     
     override func viewDidLoad() {
@@ -31,10 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.newsTableView.delegate = self
         self.newsTableView.dataSource = self
         
-        var tempNews:News? = nil
-        tempNews?.title = "Test"
-        tempNews?.descriptionTextString = "Test Test"
-        newsArray?.append(tempNews!)
+        self.loadData(pageNunm)
 
         
     }
@@ -47,7 +46,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if newsArray != nil{
+            return (newsArray?.count)!
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -55,11 +57,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsTableViewCell", for:indexPath) as! NewsTableViewCell
-
-        cell.titleLabel.text = "Test"
-        cell.titleLabel.textColor = UIColor.red
-        return cell
+        
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "newsTableViewCell") as? NewsTableViewCell{
+            if newsArray != nil{
+                cell.cellNews = newsArray![indexPath.row]
+                
+                // To display alternating cell background colors
+                let isOddCell = indexPath.row % 2 == 0 ? false : true
+                cell.configureCell(isOddCell)
+                
+                // While reaching the end of the tableview, show activity indicator and 
+                // get next page results from API
+                if indexPath.row == (newsArray?.count)! - 2{
+                    pageNunm += 1
+                    loadData(pageNunm)
+                }
+                return cell
+            }else{
+                // Just making sure. Cell should not reach here
+                return UITableViewCell()
+            }
+        }else{
+            // Never reaches here, just fail proof
+            return UITableViewCell()
+        }
 
     }
     
@@ -67,5 +89,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func loadData(_ pageNum: Int) {
+        
+        // Mark that data fetching is under progress.
+        self.isDownloadingData = true
+        
+        // get page results
+        NetworkClass.instance.getArticles(page: pageNum) {[unowned self] (recentNews, success) in
+            if success{
+                
+                // If initial data is being fetched then initialize newsArray
+                if pageNum == 1{
+                    self.newsArray?.removeAll()
+                    if self.newsArray == nil{
+                        self.newsArray = [News]()
+                    }
+                }
+                // append news
+                self.newsArray?.append(contentsOf: recentNews!)
+                DispatchQueue.main.async(execute: {
+                    // Reload table view
+                    self.newsTableView.reloadData()
+                    // End refreshing the refreshControl
+                    self.refreshControl.endRefreshing()
+                })
+            }else{
+                print("API Call failed")
+            }
+            // Mark that data download is finished
+            self.isDownloadingData = false
+        }
+    }
+
 }
 
