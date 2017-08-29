@@ -8,6 +8,14 @@
 
 import UIKit
 
+//make UI respond to handle error states from API.
+public enum EmptyErrorEnum: Int {
+    case none
+    case empty
+    case error
+}
+
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var newsTableView: UITableView!
@@ -18,6 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var refreshControl: UIRefreshControl!
     var pageNunm = 1
     var isDownloadingData: Bool = false
+    var nextPageOffset: String? = nil
+    var emptyErrorState = EmptyErrorEnum.none
 
     
     override func viewDidLoad() {
@@ -33,7 +43,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.newsTableView.delegate = self
         self.newsTableView.dataSource = self
         
-        self.loadData(pageNunm)
+        if nextPageOffset != nil {
+            self.loadData(pageNunm, nextPageOffset: nextPageOffset!)
+           }
+        else{
+            self.loadData(pageNunm, nextPageOffset: "")
+
+        }
 
         
     }
@@ -43,13 +59,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         if newsArray != nil{
             newsTableView.separatorStyle = .singleLine
-            
+            self.emptyErrorState = .none
+
             return 1
         }
         
         // If thers is no data in the data source array, display the empty table message.
         let somethingWrongLabel = UILabel()
+        if self.emptyErrorState == .empty {
+            somethingWrongLabel.text = "News not found for your query"
+        }
+
+        if self.emptyErrorState == .empty {
+
         somethingWrongLabel.text = "Oops... Something is Not Right. Pull to Refresh"
+            
+        }
         somethingWrongLabel.numberOfLines = 0;
         somethingWrongLabel.textAlignment = .center
         
@@ -67,8 +92,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if newsArray != nil{
+            emptyErrorState = .none
             return (newsArray?.count)!
         }
+        emptyErrorState = .empty
+
         return 0
     }
     
@@ -91,7 +119,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 // get next page results from API
                 if indexPath.row == (newsArray?.count)! - 2{
                     pageNunm += 1
-                    loadData(pageNunm)
+                    loadData(pageNunm, nextPageOffset: nextPageOffset)
                 }
                 return cell
             }else{
@@ -111,13 +139,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    func loadData(_ pageNum: Int) {
+    func loadData(_ pageNum: Int, nextPageOffset:String?) {
         
         // Mark that data fetching is under progress.
         self.isDownloadingData = true
         
         // get page results
-        NetworkClass.instance.getArticles(page: pageNum) {[unowned self] (recentNews, success) in
+        NetworkClass.instance.getArticles(page: pageNum, nextPageOffset:nextPageOffset!) {[unowned self] (recentNews, apiNextPageOffset, success) in
             if success{
                 
                 // If initial data is being fetched then initialize newsArray
@@ -128,7 +156,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 // append news
+                self.nextPageOffset = apiNextPageOffset
                 self.newsArray?.append(contentsOf: recentNews!)
+                self.emptyErrorState = .none
+
                 DispatchQueue.main.async(execute: {
                     // Reload table view
                     self.newsTableView.reloadData()
@@ -136,6 +167,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.refreshControl.endRefreshing()
                 })
             }else{
+                self.emptyErrorState = .error
+
                 print("API Call failed")
             }
             // Mark that data download is finished
@@ -149,7 +182,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if refreshControl.isRefreshing {
             if !isDownloadingData {
                 pageNunm = 1
-                loadData(pageNunm)
+                loadData(pageNunm, nextPageOffset: nextPageOffset)
             }
         }
     }

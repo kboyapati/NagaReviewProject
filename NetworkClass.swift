@@ -19,14 +19,14 @@ class NetworkClass{
     let session = URLSession.shared
     var numberOfComments:Int? = 0
     
-    func getArticles(page: Int, completionHandler: @escaping (_ recentArticles: Array<News>?,_ success: Bool) -> Void){
+    func getArticles(page: Int,nextPageOffset:String, completionHandler: @escaping (_ recentArticles: Array<News>?,_ nextPagePath:String,_ success: Bool) -> Void){
         
         // Form the URL from Components
         let components = NSURLComponents(string: baseURLString)
         var queryItems = [NSURLQueryItem]()
         
-        queryItems.append(NSURLQueryItem(name: "page", value: String(page)))
-        
+        queryItems.append(NSURLQueryItem(name: "after", value: nextPageOffset))
+
         components?.queryItems = queryItems as [URLQueryItem]
         
         let request = NSMutableURLRequest(url: (components?.url!)!)
@@ -44,7 +44,8 @@ class NetworkClass{
             if let dic = responseObject as? [String: Any]{
                 let dataDic = dic["data"] as? [String: Any]
                 let results = dataDic?["children"] as? [[String:Any]]
-                
+                let nextPage = dataDic?["after"] as? String
+
                 if  responseObject != nil{
 //                    print("RESULTS - \(String(describing: results))")
                     
@@ -58,7 +59,7 @@ class NetworkClass{
                         let title = appDict?["title"] as? String
                         let imageURLString = appDict?["thumbnail"] as? String
                         self.numberOfComments = appDict?["num_comments"] as? Int
-                        
+
                         // TODO Implement CommentsPath
                         //   let commentsPath = appDict?["permalink"] as? String
                         //   let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
@@ -70,7 +71,7 @@ class NetworkClass{
                         
                         newsArray.append(aNews)
                     }
-                    completionHandler(newsArray, true)
+                    completionHandler(newsArray, nextPage!, true)
                 }
                 
             }
@@ -79,7 +80,7 @@ class NetworkClass{
             {
                 (operation, error) in
                 print("Error: " + error.localizedDescription)
-                completionHandler(nil, false)
+                completionHandler(nil,"", false)
 
         })
 
