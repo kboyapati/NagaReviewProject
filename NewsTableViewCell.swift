@@ -39,7 +39,7 @@ class NewsTableViewCell: UITableViewCell {
             self.thumbnailImageView.image = UIImage(named: "newsplaceholderColor")
             let titleText = "\(aNewsObj.title)"
             self.titleLabel.text = titleText
-            self.descriptionTextlabel.text = aNewsObj.descriptionTextString
+            self.descriptionTextlabel.text = "Comments : \(aNewsObj.descriptionTextString!) "
             self.cellMaxSizeImageUrl = aNewsObj.biggerMedia
             
             // Submit request to download and apply poster image to the imageView outlet

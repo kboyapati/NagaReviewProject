@@ -113,6 +113,18 @@ class MediaDetailsViewController: UIViewController {
     }
     @IBAction func shareToSocialNetworkPressed(_ sender: AnyObject) {
         
+        let shareImage = self.postedMedia.image
+        
+        if shareImage != nil {
+        let objectsToShare = [shareImage!]
+        
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: [])
+        activityVC.excludedActivityTypes = [UIActivityType.print, UIActivityType.assignToContact, UIActivityType.addToReadingList]
+        
+        self.present(activityVC, animated: true) { _ in
+        }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
