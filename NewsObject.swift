@@ -18,6 +18,7 @@ struct News{
     fileprivate var _numberOfComments: Int? = 0
     fileprivate var _commentsPath: String?
     fileprivate var _biggerMedia: String?
+    fileprivate var _createdTime: Int?
 
     
     var title: String{
@@ -47,28 +48,11 @@ struct News{
         return _biggerMedia
     }
 
-//    init(title: String, imageURLString: String?, datePosted: String, descriptionTextString: String?, commentsPath:String?){
-//        
-//        _title = title
-//        
-//        if imageURLString != nil{
-//            _imageURLString = imageURLString
-//        }
-//        
-//        _datePosted = datePosted
-//        
-//        if commentsPath != nil{
-//            _commentsPath = commentsPath
-//        }
-//        
-//        if descriptionTextString != nil{
-//            _descriptionTextString = descriptionTextString
-//        }
-//        
-//        
-//    }
+    var createdTime: Int?{
+        return _createdTime
+    }
     
-    init(title: String, imageURLString: String?, numberOfComments: Int, biggerMediaURL: String?, authorName: String?){
+    init(title: String, imageURLString: String?, numberOfComments: Int, biggerMediaURL: String?, authorName: String?, createdTime:Int?){
         
         _title = title
         
@@ -93,6 +77,10 @@ struct News{
 
         if authorName != nil{
             _authorName = authorName!
+        }
+        
+        if createdTime != nil {
+            _createdTime = createdTime
         }
     }
     

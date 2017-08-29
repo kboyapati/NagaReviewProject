@@ -65,8 +65,8 @@ class NetworkClass{
                         let title = appDict?["title"] as? String
                         let imageURLString = appDict?["thumbnail"] as? String
                         self.numberOfComments = appDict?["num_comments"] as? Int
-
                         let authorName = appDict?["author"] as? String
+                        let createdTime = appDict?["created"] as? Int
 
                         // TODO Implement CommentsPath
                         //   let commentsPath = appDict?["permalink"] as? String
@@ -75,7 +75,7 @@ class NetworkClass{
                         //   let aNews = News(title: (title)!, imageURLString: imageURLString, datePosted: "01/01/2017", descriptionTextString: (numberOfComments!), commentsPath:commentsCompleteurl )
                         
                         
-                        let aNews = News(title: (title)!, imageURLString: imageURLString, numberOfComments: (self.numberOfComments!), biggerMediaURL:imageSourceUrl, authorName: authorName)
+                        let aNews = News(title: (title)!, imageURLString: imageURLString, numberOfComments: (self.numberOfComments!), biggerMediaURL:imageSourceUrl, authorName: authorName, createdTime: createdTime)
                         
                         newsArray.append(aNews)
                     }
