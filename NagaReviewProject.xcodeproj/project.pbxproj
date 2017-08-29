@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1EA8CD1F55D16F009B4CD7 /* newsplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CB1F55D16F009B4CD7 /* newsplaceholder.png */; };
+		4D1EA8CE1F55D16F009B4CD7 /* newsplaceholderColor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CC1F55D16F009B4CD7 /* newsplaceholderColor.jpg */; };
 		4D7C4B5F1F54B669009056C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */; };
 		4D7C4B611F54B669009056C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B601F54B669009056C3 /* ViewController.swift */; };
 		4D7C4B641F54B669009056C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C4B621F54B669009056C3 /* Main.storyboard */; };
@@ -17,8 +19,6 @@
 		4D7C4B901F54C5DF009056C3 /* NetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B8F1F54C5DF009056C3 /* NetworkClass.swift */; };
 		4D7C4B921F54C783009056C3 /* NewsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B911F54C783009056C3 /* NewsObject.swift */; };
 		4D7C4B961F54CAF7009056C3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B951F54CAF7009056C3 /* NewsTableViewCell.swift */; };
-		4D7C4B991F54E9BA009056C3 /* newsplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C4B971F54E9BA009056C3 /* newsplaceholder.png */; };
-		4D7C4B9A1F54E9BA009056C3 /* newsplaceholderColor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C4B981F54E9BA009056C3 /* newsplaceholderColor.jpg */; };
 		77172B5CDCEBAFEB21ECF2FC /* Pods_NagaReviewProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9706A2E4CCE92678EF193CE0 /* Pods_NagaReviewProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		2F3E9A39CB3AA89BE8B16122 /* Pods-NagaReviewProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NagaReviewProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NagaReviewProject/Pods-NagaReviewProject.debug.xcconfig"; sourceTree = "<group>"; };
+		4D1EA8CB1F55D16F009B4CD7 /* newsplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsplaceholder.png; sourceTree = "<group>"; };
+		4D1EA8CC1F55D16F009B4CD7 /* newsplaceholderColor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newsplaceholderColor.jpg; sourceTree = "<group>"; };
 		4D7C4B5B1F54B669009056C3 /* NagaReviewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NagaReviewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D7C4B601F54B669009056C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +59,6 @@
 		4D7C4B8F1F54C5DF009056C3 /* NetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClass.swift; sourceTree = "<group>"; };
 		4D7C4B911F54C783009056C3 /* NewsObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsObject.swift; sourceTree = "<group>"; };
 		4D7C4B951F54CAF7009056C3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		4D7C4B971F54E9BA009056C3 /* newsplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsplaceholder.png; sourceTree = "<group>"; };
-		4D7C4B981F54E9BA009056C3 /* newsplaceholderColor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newsplaceholderColor.jpg; sourceTree = "<group>"; };
 		9706A2E4CCE92678EF193CE0 /* Pods_NagaReviewProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NagaReviewProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58FD779F232DD61E60D9F15 /* Pods-NagaReviewProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NagaReviewProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NagaReviewProject/Pods-NagaReviewProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,8 +155,8 @@
 		4D7C4B8C1F54C45D009056C3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4D7C4B971F54E9BA009056C3 /* newsplaceholder.png */,
-				4D7C4B981F54E9BA009056C3 /* newsplaceholderColor.jpg */,
+				4D1EA8CB1F55D16F009B4CD7 /* newsplaceholder.png */,
+				4D1EA8CC1F55D16F009B4CD7 /* newsplaceholderColor.jpg */,
 				4D7C4B8F1F54C5DF009056C3 /* NetworkClass.swift */,
 				4D7C4B951F54CAF7009056C3 /* NewsTableViewCell.swift */,
 				4D7C4B911F54C783009056C3 /* NewsObject.swift */,
@@ -284,8 +284,8 @@
 			files = (
 				4D7C4B691F54B669009056C3 /* LaunchScreen.storyboard in Resources */,
 				4D7C4B661F54B669009056C3 /* Assets.xcassets in Resources */,
-				4D7C4B9A1F54E9BA009056C3 /* newsplaceholderColor.jpg in Resources */,
-				4D7C4B991F54E9BA009056C3 /* newsplaceholder.png in Resources */,
+				4D1EA8CE1F55D16F009B4CD7 /* newsplaceholderColor.jpg in Resources */,
+				4D1EA8CD1F55D16F009B4CD7 /* newsplaceholder.png in Resources */,
 				4D7C4B641F54B669009056C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

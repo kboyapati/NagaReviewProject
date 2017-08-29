@@ -39,7 +39,7 @@ class NewsTableViewCell: UITableViewCell {
             self.titleLabel.text = titleText
             self.descriptionTextlabel.text = aNewsObj.descriptionTextString
             
-            print("In news - Image - \(String(describing: aNewsObj.imageURLString))")
+//            print("In news - Image - \(String(describing: aNewsObj.imageURLString))")
             
             // Submit request to download and apply poster image to the imageView outlet
             NetworkClass.instance.downloadImageTask(aNewsObj.imageURLString, completionHandler: { [weak self](image, success) in

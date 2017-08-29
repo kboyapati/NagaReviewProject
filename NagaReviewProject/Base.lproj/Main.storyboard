@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,25 +34,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-q7-dSN">
-                                                    <rect key="frame" x="129" y="36" width="231" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-q7-dSN">
+                                                    <rect key="frame" x="143" y="15" width="217" height="98.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="74y-7s-7yG">
-                                                    <rect key="frame" x="129" y="65" width="231" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74y-7s-7yG">
+                                                    <rect key="frame" x="143" y="121.5" width="217" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="umD-tb-O70"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newsplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JFr-tF-6oi">
-                                                    <rect key="frame" x="16" y="20" width="90" height="135"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newsplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="JFr-tF-6oi">
+                                                    <rect key="frame" x="16" y="15" width="90" height="135"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="135" id="0SN-m2-hEZ"/>
+                                                        <constraint firstAttribute="width" secondItem="JFr-tF-6oi" secondAttribute="height" multiplier="2:3" id="mcR-YT-0Lt"/>
+                                                        <constraint firstAttribute="width" constant="90" id="rAM-j2-JSJ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bD9-q7-dSN" firstAttribute="width" secondItem="74y-7s-7yG" secondAttribute="width" id="82P-dd-mgc"/>
+                                                <constraint firstItem="74y-7s-7yG" firstAttribute="leading" secondItem="JFr-tF-6oi" secondAttribute="trailing" constant="37" id="AaL-EK-ueT"/>
+                                                <constraint firstItem="JFr-tF-6oi" firstAttribute="top" secondItem="bD9-q7-dSN" secondAttribute="top" id="Myb-nI-ZkR"/>
+                                                <constraint firstAttribute="bottom" secondItem="JFr-tF-6oi" secondAttribute="bottom" constant="15" id="N3k-Bw-Yn5"/>
+                                                <constraint firstAttribute="bottom" secondItem="74y-7s-7yG" secondAttribute="bottom" constant="8" id="RFJ-7U-ABy"/>
+                                                <constraint firstItem="JFr-tF-6oi" firstAttribute="leading" secondItem="3q5-i3-iA3" secondAttribute="leading" constant="16" id="aDa-oc-bqW"/>
+                                                <constraint firstItem="74y-7s-7yG" firstAttribute="top" secondItem="bD9-q7-dSN" secondAttribute="bottom" constant="8" id="aY2-nn-QbW"/>
+                                                <constraint firstItem="bD9-q7-dSN" firstAttribute="leading" secondItem="JFr-tF-6oi" secondAttribute="trailing" constant="37" id="cED-Qt-9xl"/>
+                                                <constraint firstItem="JFr-tF-6oi" firstAttribute="top" secondItem="3q5-i3-iA3" secondAttribute="top" constant="15" id="fgx-Bs-urG"/>
+                                                <constraint firstAttribute="trailing" secondItem="bD9-q7-dSN" secondAttribute="trailing" constant="15" id="kg6-LE-cx6"/>
+                                                <constraint firstAttribute="trailing" secondItem="74y-7s-7yG" secondAttribute="trailing" constant="15" id="xNG-ux-eNf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionTextlabel" destination="74y-7s-7yG" id="Wrh-nd-6I6"/>
@@ -103,6 +122,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="newsplaceholder" width="16" height="16"/>
+        <image name="newsplaceholder.png" width="90" height="135"/>
     </resources>
 </document>

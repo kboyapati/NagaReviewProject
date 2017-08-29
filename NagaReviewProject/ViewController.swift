@@ -41,7 +41,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if newsArray != nil{
+            newsTableView.separatorStyle = .singleLine
+            
+            return 1
+        }
+        
+        // If thers is no data in the data source array, display the empty table message.
+        let somethingWrongLabel = UILabel()
+        somethingWrongLabel.text = "Oops... Something is Not Right. Pull to Refresh"
+        somethingWrongLabel.numberOfLines = 0;
+        somethingWrongLabel.textAlignment = .center
+        
+        tableView.backgroundView = somethingWrongLabel
+        newsTableView.separatorStyle = .none
+        
+        // Hide scroll to top button when no results are being shown
+        
+        // Unhide the backgroundView
+        tableView.backgroundView?.isHidden = false
+        
+        return 0
     }
     
     
@@ -122,6 +142,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.isDownloadingData = false
         }
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // When scrolling stopped, check if the refresh control is active and if there is already data fetch under progress
+        // If so, then reset the page number of the required results and submit data fetch request.
+        if refreshControl.isRefreshing {
+            if !isDownloadingData {
+                pageNunm = 1
+                loadData(pageNunm)
+            }
+        }
+    }
+
 
 }
 

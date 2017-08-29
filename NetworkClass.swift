@@ -17,6 +17,7 @@ class NetworkClass{
 
     fileprivate init(){}
     let session = URLSession.shared
+    var numberOfComments:Int? = 0
     
     func getArticles(page: Int, completionHandler: @escaping (_ recentArticles: Array<News>?,_ success: Bool) -> Void){
         
@@ -45,25 +46,31 @@ class NetworkClass{
                 let results = dataDic?["children"] as? [[String:Any]]
                 
                 if  responseObject != nil{
-                    print("RESULTS - \(String(describing: results))")
+//                    print("RESULTS - \(String(describing: results))")
                     
                     var newsArray = [News]()
                     
                     for news in results!{
                         
-                        print(news)
+//                        print(news)
                         
                         let appDict = news["data"] as? [String:Any]
                         let title = appDict?["title"] as? String
                         let imageURLString = appDict?["thumbnail"] as? String
-                        let commentsPath = appDict?["permalink"] as? String
-                        let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
-                        let numberOfComments = String(describing: appDict?["num_comments"])
+                        self.numberOfComments = appDict?["num_comments"] as? Int
                         
-                        let aNews = News(title: (title)!, imageURLString: imageURLString, datePosted: "01/01/2017", descriptionTextString: numberOfComments, numberOfComments:commentsCompleteurl )
+                        // TODO Implement CommentsPath
+                        //   let commentsPath = appDict?["permalink"] as? String
+                        //   let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
+                        
+                        //   let aNews = News(title: (title)!, imageURLString: imageURLString, datePosted: "01/01/2017", descriptionTextString: (numberOfComments!), commentsPath:commentsCompleteurl )
+                        
+                        
+                        let aNews = News(title: (title)!, imageURLString: imageURLString, numberOfComments: (self.numberOfComments!))
+                        
                         newsArray.append(aNews)
                     }
-                     completionHandler(newsArray, true)
+                    completionHandler(newsArray, true)
                 }
                 
             }
@@ -147,7 +154,7 @@ class NetworkClass{
             
         }
         
-        print("Image URL- \(url)")
+//        print("Image URL- \(url)")
         
         let dataTask = session.dataTask(with: imageURL, completionHandler: { (data, response, error) in
             guard error == nil && data != nil else {
