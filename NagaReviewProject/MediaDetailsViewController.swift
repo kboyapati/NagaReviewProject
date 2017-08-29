@@ -32,6 +32,10 @@ class MediaDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Post Details"
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+
         self.setMedia()
         if self.authorName != nil {
         self.authorNameLabel.text = "Posted By : \(String(describing: self.authorName!))"
@@ -40,6 +44,12 @@ class MediaDetailsViewController: UIViewController {
             self.authorNameLabel.text = "Posted By : Unknown)"
  
         }
+        self.saveToCameraRoll.backgroundColor =  UIColor(red: 0.2, green: 0.3, blue: 0.6, alpha: 1.0)
+        self.shareToSocialNetwork.backgroundColor =  UIColor(red: 0.2, green: 0.3, blue: 0.6, alpha: 1.0)
+
+        self.saveToCameraRoll.titleLabel?.tintColor = UIColor.white
+        self.shareToSocialNetwork.titleLabel?.tintColor = UIColor.white
+
     }
     
     func setMediaPath(with url : String){

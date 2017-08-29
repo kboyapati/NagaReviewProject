@@ -24,14 +24,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="165" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lzA-Du-ZwU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsTableViewCell" rowHeight="165" id="HsT-fI-iaz" customClass="NewsTableViewCell" customModule="NagaReviewProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="165"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HsT-fI-iaz" id="3q5-i3-iA3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-q7-dSN">
@@ -49,7 +49,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newsplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="JFr-tF-6oi">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newsplaceholderColor" translatesAutoresizingMaskIntoConstraints="NO" id="JFr-tF-6oi">
                                                     <rect key="frame" x="16" y="15" width="90" height="135"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="135" id="0SN-m2-hEZ"/>
@@ -84,18 +84,32 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="28T-6C-L2h"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NZ-GH-2Rx" customClass="CustomGraphicButton" customModule="NagaReviewProject" customModuleProvider="target">
+                                <rect key="frame" x="274" y="582" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Kl6-9v-W4j"/>
+                                    <constraint firstAttribute="height" constant="60" id="p4l-bi-Wrd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <connections>
+                                    <action selector="scrollToTopTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZP-ul-mIP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="topMargin" secondItem="lzA-Du-ZwU" secondAttribute="top" id="69g-HY-biH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lzA-Du-ZwU" secondAttribute="trailing" constant="-16" id="HPo-Nh-gJS"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5NZ-GH-2Rx" secondAttribute="bottom" constant="25" id="Uad-KB-dph"/>
                             <constraint firstItem="lzA-Du-ZwU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Zuj-I5-jRC"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="lzA-Du-ZwU" secondAttribute="bottom" constant="64" id="c5u-jQ-A8H"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lzA-Du-ZwU" secondAttribute="bottom" id="c5u-jQ-A8H"/>
+                            <constraint firstAttribute="trailing" secondItem="5NZ-GH-2Rx" secondAttribute="trailing" constant="41" id="eu2-BT-dgQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Top News" id="vTy-2g-3hq"/>
                     <connections>
                         <outlet property="newsTableView" destination="lzA-Du-ZwU" id="4ca-S7-gV6"/>
+                        <outlet property="scrollToTopButton" destination="5NZ-GH-2Rx" id="jEM-de-Dqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,6 +136,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="newsplaceholder.png" width="90" height="135"/>
+        <image name="newsplaceholderColor" width="90" height="135"/>
     </resources>
 </document>

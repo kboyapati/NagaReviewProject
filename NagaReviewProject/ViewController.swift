@@ -19,6 +19,7 @@ public enum EmptyErrorEnum: Int {
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var scrollToTopButton: CustomGraphicButton!
 
 
     var newsArray: [News]?
@@ -36,7 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
-        self.refreshControl.backgroundColor = UIColor.lightGray
+        self.refreshControl.backgroundColor = UIColor.white
         self.newsTableView.addSubview(refreshControl)
 
         
@@ -59,6 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         if newsArray != nil{
             newsTableView.separatorStyle = .singleLine
+            scrollToTopButton.isHidden = false
             self.emptyErrorState = .none
 
             return 1
@@ -75,9 +77,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         somethingWrongLabel.text = "Oops... Something is Not Right. Pull to Refresh"
             
         }
+        
         somethingWrongLabel.numberOfLines = 0;
         somethingWrongLabel.textAlignment = .center
-        
+        scrollToTopButton.isHidden = true
+
         tableView.backgroundView = somethingWrongLabel
         newsTableView.separatorStyle = .none
         
@@ -197,6 +201,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+
+    @IBAction func scrollToTopTapped(sender: UIButton) {
+        
+        // Get the indexpath for the first cell
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.newsTableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+
+    }
+    
+
 
 
 }

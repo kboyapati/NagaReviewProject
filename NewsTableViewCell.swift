@@ -33,10 +33,10 @@ class NewsTableViewCell: UITableViewCell {
         
         self.backgroundColor = UIColor.white
         if isOdd{
-            self.backgroundColor = UIColor.lightGray
+            self.backgroundColor = UIColor.white
         }
         if let aNewsObj = cellNews{
-            self.thumbnailImageView.image = UIImage(named: "newsplaceholder")
+            self.thumbnailImageView.image = UIImage(named: "newsplaceholderColor")
             let titleText = "\(aNewsObj.title)"
             self.titleLabel.text = titleText
             self.descriptionTextlabel.text = aNewsObj.descriptionTextString
