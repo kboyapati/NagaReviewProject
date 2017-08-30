@@ -44,12 +44,13 @@ class MediaDetailsViewController: UIViewController {
             self.authorNameLabel.text = "Posted By : Unknown)"
  
         }
-        self.saveToCameraRoll.backgroundColor =  UIColor(red: 0.2, green: 0.3, blue: 0.6, alpha: 1.0)
-        self.shareToSocialNetwork.backgroundColor =  UIColor(red: 0.2, green: 0.3, blue: 0.6, alpha: 1.0)
+        self.saveToCameraRoll.backgroundColor =  floatingButtonShadowColor
+        self.shareToSocialNetwork.backgroundColor =  floatingButtonShadowColor
 
         self.saveToCameraRoll.titleLabel?.tintColor = UIColor.white
         self.shareToSocialNetwork.titleLabel?.tintColor = UIColor.white
 
+        
     }
     
     func setMediaPath(with url : String){

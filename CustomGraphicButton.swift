@@ -21,13 +21,9 @@ class CustomGraphicButton: UIButton {
         self.layer.shadowOpacity = 0.9
         self.layer.shadowOffset = CGSize(width:0.0, height:2.0)
 
-        self.setImage(UIImage(named: "Up"), for: .normal)
-        self.setImage(UIImage(named: "Up"), for: .selected)
-        self.setImage(UIImage(named: "Up"), for: .highlighted)
-        let floatingButtonShadowColor = UIColor(red: 0.2, green: 0.3, blue: 0.6, alpha: 1.0)
-
-//        self.layer.shadowColor = UIColor.blue.cgColor
-//        self.tintColor = UIColor.blue
+        self.setImage(UIImage(named: upImageName), for: .normal)
+        self.setImage(UIImage(named: upImageName), for: .selected)
+        self.setImage(UIImage(named: upImageName), for: .highlighted)
 
         self.layer.shadowColor = floatingButtonShadowColor.cgColor
         self.tintColor = floatingButtonShadowColor

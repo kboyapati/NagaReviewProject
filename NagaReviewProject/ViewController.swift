@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
+        self.refreshControl.attributedTitle = NSAttributedString(string: refreshControlLabelString)
         self.refreshControl.backgroundColor = UIColor.white
         self.newsTableView.addSubview(refreshControl)
 
@@ -69,12 +69,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // If thers is no data in the data source array, display the empty table message.
         let somethingWrongLabel = UILabel()
         if self.emptyErrorState == .empty {
-            somethingWrongLabel.text = "News not found for your query"
+            somethingWrongLabel.text = emptyTableMessage
         }
 
         if self.emptyErrorState == .empty {
 
-        somethingWrongLabel.text = "Oops... Something is Not Right. Pull to Refresh"
+        somethingWrongLabel.text = emptyTableErrorMessage
             
         }
         
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "newsTableViewCell") as? NewsTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: newsTableViewCellIdentifier) as? NewsTableViewCell{
             if newsArray != nil{
                 cell.cellNews = newsArray![indexPath.row]
                 

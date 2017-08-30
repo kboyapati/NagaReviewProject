@@ -10,6 +10,7 @@
 		4D1EA8D11F55EECB009B4CD7 /* MediaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */; };
 		4D1EA8D21F55EECB009B4CD7 /* MediaDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */; };
 		4D1EA8D41F5603C0009B4CD7 /* CustomGraphicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EA8D31F5603C0009B4CD7 /* CustomGraphicButton.swift */; };
+		4D1EA8D81F563770009B4CD7 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EA8D71F563770009B4CD7 /* GlobalConstants.swift */; };
 		4D7C4B5F1F54B669009056C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */; };
 		4D7C4B611F54B669009056C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C4B601F54B669009056C3 /* ViewController.swift */; };
 		4D7C4B641F54B669009056C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C4B621F54B669009056C3 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailsViewController.swift; sourceTree = "<group>"; };
 		4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaDetailsViewController.xib; sourceTree = "<group>"; };
 		4D1EA8D31F5603C0009B4CD7 /* CustomGraphicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGraphicButton.swift; sourceTree = "<group>"; };
+		4D1EA8D71F563770009B4CD7 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		4D7C4B5B1F54B669009056C3 /* NagaReviewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NagaReviewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D7C4B601F54B669009056C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4D1EA8D91F563A58009B4CD7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D7C4B601F54B669009056C3 /* ViewController.swift */,
+				4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4D1EA8DA1F563A72009B4CD7 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */,
+				4D7C4B621F54B669009056C3 /* Main.storyboard */,
+				4D7C4B671F54B669009056C3 /* LaunchScreen.storyboard */,
+			);
+			name = Xib;
+			sourceTree = "<group>";
+		};
 		4D7C4B521F54B669009056C3 = {
 			isa = PBXGroup;
 			children = (
@@ -127,12 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				4D7C4B5E1F54B669009056C3 /* AppDelegate.swift */,
-				4D7C4B601F54B669009056C3 /* ViewController.swift */,
-				4D1EA8CF1F55EECB009B4CD7 /* MediaDetailsViewController.swift */,
-				4D1EA8D01F55EECB009B4CD7 /* MediaDetailsViewController.xib */,
-				4D7C4B621F54B669009056C3 /* Main.storyboard */,
+				4D1EA8D91F563A58009B4CD7 /* ViewControllers */,
+				4D1EA8DA1F563A72009B4CD7 /* Xib */,
 				4D7C4B651F54B669009056C3 /* Assets.xcassets */,
-				4D7C4B671F54B669009056C3 /* LaunchScreen.storyboard */,
 				4D7C4B6A1F54B669009056C3 /* Info.plist */,
 			);
 			path = NagaReviewProject;
@@ -163,6 +181,7 @@
 				4D7C4B951F54CAF7009056C3 /* NewsTableViewCell.swift */,
 				4D7C4B911F54C783009056C3 /* NewsObject.swift */,
 				4D1EA8D31F5603C0009B4CD7 /* CustomGraphicButton.swift */,
+				4D1EA8D71F563770009B4CD7 /* GlobalConstants.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -367,6 +386,7 @@
 				4D1EA8D11F55EECB009B4CD7 /* MediaDetailsViewController.swift in Sources */,
 				4D7C4B961F54CAF7009056C3 /* NewsTableViewCell.swift in Sources */,
 				4D7C4B5F1F54B669009056C3 /* AppDelegate.swift in Sources */,
+				4D1EA8D81F563770009B4CD7 /* GlobalConstants.swift in Sources */,
 				4D7C4B921F54C783009056C3 /* NewsObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

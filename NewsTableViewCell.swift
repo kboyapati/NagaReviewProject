@@ -39,7 +39,7 @@ class NewsTableViewCell: UITableViewCell {
             self.backgroundColor = UIColor.white
         }
         if let aNewsObj = cellNews{
-            self.thumbnailImageView.image = UIImage(named: "newsplaceholderColor")
+            self.thumbnailImageView.image = UIImage(named: placeholderImageName)
             let titleText = "\(aNewsObj.title)"
             self.titleLabel.text = titleText
             self.cellMaxSizeImageUrl = aNewsObj.biggerMedia
