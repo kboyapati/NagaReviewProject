@@ -26,7 +26,7 @@ class NetworkClass{
         var queryItems = [NSURLQueryItem]()
         
         queryItems.append(NSURLQueryItem(name: "after", value: nextPageOffset))
-
+        
         components?.queryItems = queryItems as [URLQueryItem]
         
         let request = NSMutableURLRequest(url: (components?.url!)!)
@@ -34,26 +34,39 @@ class NetworkClass{
         
         
         
-        let manager = AFHTTPSessionManager()
-        
-        manager.get((request.url?.absoluteString)!, parameters: nil, progress: { (NSProgress) in
+        // Create a data task to download the news
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
-        }, success: {
-            (operation, responseObject) in
+            // Ensure there is no error and the httpresponsecode is Success
+            guard error == nil  && (response as? HTTPURLResponse)!.statusCode == 200 else {
+                completionHandler(nil,"", false)
+                return
+            }
             
-            if let dic = responseObject as? [String: Any]{
-                let dataDic = dic["data"] as? [String: Any]
+            
+            // Debug - Print to console
+            //            print(response.debugDescription)
+            //            print("DATA- \(data)")
+            
+            do{
+                // ****TODO USE AFNetworking instead HTTPSERVICE
+                // Serialize the data downloaded to JSON format
+                
+                
+                let responseJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:Any]
+                
+                let dataDic = responseJSON?["data"] as? [String:Any]
                 let results = dataDic?["children"] as? [[String:Any]]
                 let nextPage = dataDic?["after"] as? String
-
-                if  responseObject != nil{
-//                    print("RESULTS - \(String(describing: results))")
+                
+                if  responseJSON != nil{
+                    print("RESULTS - \(String(describing: results))")
                     
                     var newsArray = [News]()
                     
                     for news in results!{
                         
-//                        print(news)
+                        //                                    print(news)
                         
                         let appDict = news["data"] as? [String:Any]
                         let previewDict = appDict?["preview"] as? [String:Any]
@@ -61,13 +74,13 @@ class NetworkClass{
                         let imageSource = imagesDict?[0] as? [String:Any]
                         let source = imageSource?["source"] as? [String:Any]
                         let imageSourceUrl = source?["url"] as? String
-
+                        
                         let title = appDict?["title"] as? String
                         let imageURLString = appDict?["thumbnail"] as? String
                         self.numberOfComments = appDict?["num_comments"] as? Int
                         let authorName = appDict?["author"] as? String
                         let createdTime = appDict?["created"] as? Int
-
+                        
                         // TODO Implement CommentsPath
                         //   let commentsPath = appDict?["permalink"] as? String
                         //   let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
@@ -79,70 +92,21 @@ class NetworkClass{
                         
                         newsArray.append(aNews)
                     }
+                    
                     completionHandler(newsArray, nextPage!, true)
+                }else{
+                    completionHandler(nil,"", false)
                 }
                 
-            }
-        },
-           failure:
-            {
-                (operation, error) in
-                print("Error: " + error.localizedDescription)
+            }catch{
                 completionHandler(nil,"", false)
-
-        })
-
-//        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-//
-//            guard error == nil  && (response as? HTTPURLResponse)!.statusCode == 200 else {
-//                completionHandler(nil, false)
-//                return
-//            }
-//
-//
-//            do{
-//                // ****TODO USE AFNetworking instead HTTPSERVICE
-//                // Serialize the data downloaded to JSON format
-//                
-//                let responseJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:Any]
-//                
-//                let dataDic = responseJSON?["data"] as? [String:Any]
-//                let results = dataDic?["children"] as? [[String:Any]]
-//                
-//                if  responseJSON != nil{
-//                    print("RESULTS - \(String(describing: results))")
-//                    
-//                    var newsArray = [News]()
-//                    
-//                    for news in results!{
-//                        
-//                        print(news)
-//                        
-//                        let appDict = news["data"] as? [String:Any]
-//                        let title = appDict?["title"] as? String
-//                        let imageURLString = appDict?["thumbnail"] as? String
-//                        let commentsPath = appDict?["permalink"] as? String
-//                        let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
-//                        let numberOfComments = String(describing: appDict?["num_comments"])
-//
-//                        let aNews = News(title: (title)!, imageURLString: imageURLString, datePosted: "01/01/2017", descriptionTextString: numberOfComments, numberOfComments:commentsCompleteurl )
-//                        newsArray.append(aNews)
-//                    }
-//                    
-//                    completionHandler(newsArray, true)
-//                }else{
-//                    completionHandler(nil, false)
-//                }
-//                
-//            }catch{
-//                completionHandler(nil, false)
-//                
-//            }
-//            
-//            
-//        }
-//        
-//        task.resume()
+                
+            }
+            
+        }
+        
+        task.resume()
+        
     }
     
     func downloadImageTask(_ imageRelativePath: String?, completionHandler: @escaping (_ image: UIImage?, _ success: Bool) -> Void){
@@ -183,3 +147,78 @@ class NetworkClass{
     
 
 }
+
+//USING AFNETWORKING
+//func getArticles(page: Int,nextPageOffset:String, completionHandler: @escaping (_ recentArticles: Array<News>?,_ nextPagePath:String,_ success: Bool) -> Void){
+//    
+//    // Form the URL from Components
+//    let components = NSURLComponents(string: baseURLString)
+//    var queryItems = [NSURLQueryItem]()
+//    
+//    queryItems.append(NSURLQueryItem(name: "after", value: nextPageOffset))
+//    
+//    components?.queryItems = queryItems as [URLQueryItem]
+//    
+//    let request = NSMutableURLRequest(url: (components?.url!)!)
+//    request.httpMethod = "GET"
+//    
+//    
+//    
+//    let manager = AFHTTPSessionManager()
+//    
+//    manager.get((request.url?.absoluteString)!, parameters: nil, progress: { (NSProgress) in
+//        
+//    }, success: {
+//        (operation, responseObject) in
+//        
+//        if let dic = responseObject as? [String: Any]{
+//            let dataDic = dic["data"] as? [String: Any]
+//            let results = dataDic?["children"] as? [[String:Any]]
+//            let nextPage = dataDic?["after"] as? String
+//            
+//            if  responseObject != nil{
+//                //                    print("RESULTS - \(String(describing: results))")
+//                
+//                var newsArray = [News]()
+//                
+//                for news in results!{
+//                    
+//                    //                        print(news)
+//                    
+//                    let appDict = news["data"] as? [String:Any]
+//                    let previewDict = appDict?["preview"] as? [String:Any]
+//                    let imagesDict = previewDict?["images"] as? [Any]
+//                    let imageSource = imagesDict?[0] as? [String:Any]
+//                    let source = imageSource?["source"] as? [String:Any]
+//                    let imageSourceUrl = source?["url"] as? String
+//                    
+//                    let title = appDict?["title"] as? String
+//                    let imageURLString = appDict?["thumbnail"] as? String
+//                    self.numberOfComments = appDict?["num_comments"] as? Int
+//                    let authorName = appDict?["author"] as? String
+//                    let createdTime = appDict?["created"] as? Int
+//                    
+//                    // TODO Implement CommentsPath
+//                    //   let commentsPath = appDict?["permalink"] as? String
+//                    //   let commentsCompleteurl = "\("https://www.reddit.com")\(commentsPath!)\(".json")"
+//                    
+//                    //   let aNews = News(title: (title)!, imageURLString: imageURLString, datePosted: "01/01/2017", descriptionTextString: (numberOfComments!), commentsPath:commentsCompleteurl )
+//                    
+//                    
+//                    let aNews = News(title: (title)!, imageURLString: imageURLString, numberOfComments: (self.numberOfComments!), biggerMediaURL:imageSourceUrl, authorName: authorName, createdTime: createdTime)
+//                    
+//                    newsArray.append(aNews)
+//                }
+//                completionHandler(newsArray, nextPage!, true)
+//            }
+//            
+//        }
+//    },
+//       failure:
+//        {
+//            (operation, error) in
+//            print("Error: " + error.localizedDescription)
+//            completionHandler(nil,"", false)
+//            
+//    })
+//}
