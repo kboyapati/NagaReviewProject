@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.newsTableView.dataSource = self
         
         if nextPageOffset != nil {
-            self.loadData(pageNunm, nextPageOffset: nextPageOffset!)
+            self.loadData(pageNunm, nextPageOffset: nextPageOffset)
            }
         else{
             self.loadData(pageNunm, nextPageOffset: "")
@@ -95,24 +95,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         if newsArray != nil{
             emptyErrorState = .none
-            return (newsArray?.count)!
+            if let newsCt = newsArray?.count { return newsCt }
         }
         emptyErrorState = .empty
-
+        
         return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mediaDetailsViewCtlr = MediaDetailsViewController()
-        if newsArray != nil{
-            let path = newsArray![indexPath.row].biggerMedia
-            let authorName = newsArray![indexPath.row].authorName
-
-            mediaDetailsViewCtlr.setMediaPath(with: path!)
+        
+        guard let newsAr = newsArray else { return }
+        if let mediaPath = newsAr[indexPath.row].biggerMedia {
+            let authorName = newsAr[indexPath.row].authorName
+            mediaDetailsViewCtlr.setMediaPath(with: mediaPath)
             mediaDetailsViewCtlr.setAuthorName(with: authorName)
-
         }
         self.navigationController?.pushViewController(mediaDetailsViewCtlr, animated: true)
 
@@ -122,8 +122,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: newsTableViewCellIdentifier) as? NewsTableViewCell{
-            if newsArray != nil{
-                cell.cellNews = newsArray![indexPath.row]
+            if let newsAr = newsArray {
+                cell.cellNews = newsAr[indexPath.row]
                 
                 // To display alternating cell background colors
                 let isOddCell = indexPath.row % 2 == 0 ? false : true
@@ -131,7 +131,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 // While reaching the end of the tableview, show activity indicator and 
                 // get next page results from API
-                if indexPath.row == (newsArray?.count)! - 2{
+                if indexPath.row == newsAr.count - 2{
                     pageNunm += 1
                     loadData(pageNunm, nextPageOffset: nextPageOffset)
                 }
@@ -159,7 +159,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.isDownloadingData = true
         
         // get page results
-        NetworkClass.instance.getArticles(page: pageNum, nextPageOffset:nextPageOffset!) {[unowned self] (recentNews, apiNextPageOffset, success) in
+        NetworkClass.instance.getArticles(page: pageNum, nextPageOffset:nextPageOffset ?? "") {[unowned self] (recentNews, apiNextPageOffset, success) in
             if success{
                 
                 // If initial data is being fetched then initialize newsArray
@@ -171,7 +171,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 // append news
                 self.nextPageOffset = apiNextPageOffset
-                self.newsArray?.append(contentsOf: recentNews!)
+                if let recentNewsAr = recentNews {
+                self.newsArray?.append(contentsOf: recentNewsAr)
+                }
                 self.emptyErrorState = .none
 
                 DispatchQueue.main.async(execute: {

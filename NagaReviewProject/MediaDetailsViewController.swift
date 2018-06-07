@@ -38,7 +38,7 @@ class MediaDetailsViewController: UIViewController {
 
         self.setMedia()
         if self.authorName != nil {
-        self.authorNameLabel.text = "Posted By : \(String(describing: self.authorName!))"
+        self.authorNameLabel.text = "Posted By : \(String(describing: self.authorName ?? ""))"
         }
         else {
             self.authorNameLabel.text = "Posted By : Unknown)"
@@ -75,7 +75,7 @@ class MediaDetailsViewController: UIViewController {
                         // Animate to get a blend in appearance to increase UX
                         strongSelf.postedMedia.alpha = 0
                         UIView.animate(withDuration: 0.5, animations: {
-                            self!.postedMedia.alpha = 1
+                            self?.postedMedia.alpha = 1
                         })
                     })
                 }
@@ -85,8 +85,9 @@ class MediaDetailsViewController: UIViewController {
     }
     @IBAction func saveToCameraRollPressed(_ sender: AnyObject) {
        
+       
         PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(string:self.mediaUrlPath!)!)
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(string:self.mediaUrlPath ?? "")!)
         }) { success, error in
             if success {
                 print(" saved to camera roll")
@@ -117,7 +118,7 @@ class MediaDetailsViewController: UIViewController {
         let shareImage = self.postedMedia.image
         
         if shareImage != nil {
-        let objectsToShare = [shareImage!]
+        let objectsToShare = [shareImage]
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: [])
         activityVC.excludedActivityTypes = [UIActivityType.print, UIActivityType.assignToContact, UIActivityType.addToReadingList]

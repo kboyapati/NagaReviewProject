@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,7 +30,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNR-oS-j8f">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNR-oS-j8f">
                     <rect key="frame" x="16" y="113.5" width="343" height="486.5"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auz-Ge-lIe" userLabel="Save To Camera Roll">
@@ -60,20 +61,21 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Auz-Ge-lIe" firstAttribute="width" secondItem="Jpd-r5-X9o" secondAttribute="width" id="Hn8-A9-CdM"/>
-                <constraint firstAttribute="bottom" secondItem="Auz-Ge-lIe" secondAttribute="bottom" constant="20" id="TKK-Xi-BuD"/>
+                <constraint firstItem="z4v-zG-oq3" firstAttribute="bottom" secondItem="Auz-Ge-lIe" secondAttribute="bottom" constant="20" id="TKK-Xi-BuD"/>
                 <constraint firstItem="Jpd-r5-X9o" firstAttribute="leading" secondItem="Auz-Ge-lIe" secondAttribute="trailing" constant="6" id="VQB-Iv-z9d"/>
-                <constraint firstItem="Auz-Ge-lIe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Vkr-Sf-Db9"/>
+                <constraint firstItem="Auz-Ge-lIe" firstAttribute="leading" secondItem="z4v-zG-oq3" secondAttribute="leading" constant="16" id="Vkr-Sf-Db9"/>
                 <constraint firstItem="hNR-oS-j8f" firstAttribute="top" secondItem="AY4-QK-fHf" secondAttribute="bottom" constant="16.5" id="Z5m-iP-nLw"/>
-                <constraint firstAttribute="trailing" secondItem="Jpd-r5-X9o" secondAttribute="trailing" constant="11" id="aGJ-2G-cqV"/>
-                <constraint firstItem="AY4-QK-fHf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="aZh-8e-z5F"/>
-                <constraint firstAttribute="bottom" secondItem="Jpd-r5-X9o" secondAttribute="bottom" constant="20" id="e9V-Cn-ZsN"/>
+                <constraint firstItem="z4v-zG-oq3" firstAttribute="trailing" secondItem="Jpd-r5-X9o" secondAttribute="trailing" constant="11" id="aGJ-2G-cqV"/>
+                <constraint firstItem="AY4-QK-fHf" firstAttribute="top" secondItem="z4v-zG-oq3" secondAttribute="top" constant="54" id="aZh-8e-z5F"/>
+                <constraint firstItem="z4v-zG-oq3" firstAttribute="bottom" secondItem="Jpd-r5-X9o" secondAttribute="bottom" constant="20" id="e9V-Cn-ZsN"/>
                 <constraint firstItem="Auz-Ge-lIe" firstAttribute="top" secondItem="hNR-oS-j8f" secondAttribute="bottom" constant="17" id="hmu-iM-TcV"/>
-                <constraint firstAttribute="trailing" secondItem="AY4-QK-fHf" secondAttribute="trailing" id="l12-PL-8YK"/>
-                <constraint firstAttribute="trailing" secondItem="hNR-oS-j8f" secondAttribute="trailing" constant="16" id="lL1-Gh-GrI"/>
-                <constraint firstItem="hNR-oS-j8f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="nWM-2e-peY"/>
-                <constraint firstItem="AY4-QK-fHf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="qO1-Mv-eQx"/>
+                <constraint firstItem="z4v-zG-oq3" firstAttribute="trailing" secondItem="AY4-QK-fHf" secondAttribute="trailing" id="l12-PL-8YK"/>
+                <constraint firstItem="z4v-zG-oq3" firstAttribute="trailing" secondItem="hNR-oS-j8f" secondAttribute="trailing" constant="16" id="lL1-Gh-GrI"/>
+                <constraint firstItem="hNR-oS-j8f" firstAttribute="leading" secondItem="z4v-zG-oq3" secondAttribute="leading" constant="16" id="nWM-2e-peY"/>
+                <constraint firstItem="AY4-QK-fHf" firstAttribute="leading" secondItem="z4v-zG-oq3" secondAttribute="leading" constant="16" id="qO1-Mv-eQx"/>
                 <constraint firstItem="Jpd-r5-X9o" firstAttribute="top" secondItem="hNR-oS-j8f" secondAttribute="bottom" constant="17" id="wsV-6P-0qH"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="z4v-zG-oq3"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
